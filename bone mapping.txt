@@ -1,0 +1,14 @@
+Armature/Skeleton3D:body
+Armature/Skeleton3D:body
+head
+upper_arm.l
+lower_arm.l
+upper_leg.1
+lower_leg.l
+foot.l
+upper_arm.r
+lower_arm.r
+upper_leg.r
+upper_leg.r
+lower_leg.r
+foot.r

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cra4p8wl6wipo"]
+
+[ext_resource type="Script" path="res://scenes/knocker.gd" id="1_7i8u7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0phhi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x33g2"]
+albedo_color = Color(1, 0.172549, 0.109804, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8m6nn"]
+material = SubResource("StandardMaterial3D_x33g2")
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 0
+script = ExtResource("1_7i8u7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0phhi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_8m6nn")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

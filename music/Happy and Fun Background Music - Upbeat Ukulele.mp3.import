@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ye7kpsldqo"
+path="res://.godot/imported/Happy and Fun Background Music - Upbeat Ukulele.mp3-b39cbc97296feb6f7adc3f0c04fa9770.mp3str"
+
+[deps]
+
+source_file="res://music/Happy and Fun Background Music - Upbeat Ukulele.mp3"
+dest_files=["res://.godot/imported/Happy and Fun Background Music - Upbeat Ukulele.mp3-b39cbc97296feb6f7adc3f0c04fa9770.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

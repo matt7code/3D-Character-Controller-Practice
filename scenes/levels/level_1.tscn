@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8s74yva06b5t"]
+
+[ext_resource type="PackedScene" uid="uid://bgggbqijui2b1" path="res://scenes/low_poly_man.tscn" id="1_wwff8"]
+[ext_resource type="PackedScene" uid="uid://b6or14bhy5kef" path="res://scenes/cottage.tscn" id="2_xpd1m"]
+[ext_resource type="AudioStream" uid="uid://ye7kpsldqo" path="res://music/Happy and Fun Background Music - Upbeat Ukulele.mp3" id="3_mslin"]
+[ext_resource type="PackedScene" uid="uid://cra4p8wl6wipo" path="res://scenes/knocker.tscn" id="4_eo018"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gxvoi"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_bottom_color = Color(0.164706, 0.431373, 0.0666667, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_g7730"]
+sky_material = SubResource("ProceduralSkyMaterial_gxvoi")
+
+[sub_resource type="Environment" id="Environment_ec22f"]
+background_mode = 2
+sky = SubResource("Sky_g7730")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6ikt"]
+albedo_color = Color(0.164706, 0.431373, 0.0666667, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ro4je"]
+material = SubResource("StandardMaterial3D_d6ikt")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2n5sp"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="Level 1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ec22f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 3, 3, -7)
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ro4je")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2n5sp")
+
+[node name="LowPolyMan" parent="Ground" instance=ExtResource("1_wwff8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00428432, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mslin")
+volume_db = -17.441
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="Cottage1" parent="Buildings" instance=ExtResource("2_xpd1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.337, 0, 0)
+
+[node name="Cottage4" parent="Buildings" instance=ExtResource("2_xpd1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8612, 3.47455, 0)
+
+[node name="Cottage2" parent="Buildings" instance=ExtResource("2_xpd1m")]
+transform = Transform3D(0.86193, 0, 0.507027, 0, 1, 0, -0.507027, 0, 0.86193, 5.20391, 0, -13.0873)
+
+[node name="Cottage3" parent="Buildings" instance=ExtResource("2_xpd1m")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6.39264, 0, 15.397)
+
+[node name="Cottage5" parent="Buildings" instance=ExtResource("2_xpd1m")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 2.37431, 0, 19.8399)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 1.95399e-14, -4.37114e-08, -7.39311, 3.15832, -2.53685)
+
+[node name="knocker" parent="." instance=ExtResource("4_eo018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64591, 0.861706, -3.17058)
+knockback_force = 62.5
